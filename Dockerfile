@@ -1,4 +1,3 @@
- 
 # Use OpenJDK as the base image
 FROM openjdk:17-jdk-slim
 
@@ -8,11 +7,11 @@ WORKDIR /app
 # Copy the project files
 COPY . .
 
-# Build the application
-RUN ./mvnw clean install
+# Give executable permission to mvnw and build the application
+RUN chmod +x mvnw && ./mvnw clean install
 
 # Expose the application port
 EXPOSE 8080
 
 # Run the application
-CMD ["java", "-jar", "target/*.jar"]
+CMD ["java", "-jar", "target/YOUR_APP.jar"]
